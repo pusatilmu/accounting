@@ -1,0 +1,8 @@
+{
+  "title": "Financial Management Application",
+  "account_management": "Account Management",
+  "category_management": "Transaction Categories",
+  "transaction_details": "Transaction Details",
+  "save": "Save",
+  "cancel": "Cancel"
+}

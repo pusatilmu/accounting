@@ -4,63 +4,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="title">Financial Management Application</title>
+  <title>Financial Management Application</title>
+  <style>
+    /* ==============================
+    Kelas untuk Body dan Umum
+    ============================== */
+    .body {
+      background-color: #333333;
+      /* Warna latar belakang gelap */
+      color: white;
+      /* Warna teks putih */
+      font-family: Arial, sans-serif;
+      /* Font default */
+      text-align: center;
+      /* Menyelaraskan teks ke tengah */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .h2-title {
+      font-size: 1.8rem;
+      /* Ukuran font judul lebih kecil */
+      margin-top: 0;
+      text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.8), -3px -3px 6px rgba(255, 215, 0, 0.8);
+      /* Bayangan kuning yang lebih kuat */
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    /* ==============================
+    Kelas untuk Tombol
+    ============================== */
+    .button {
+      display: block;
+      /* Tombol tampil vertikal */
+      color: #333333;
+      /* Teks tombol hitam */
+      font-size: 1rem;
+      /* Ukuran font tombol */
+      text-decoration: none;
+      /* Menghapus garis bawah */
+      margin: 10px 0;
+      /* Jarak vertikal antar tombol */
+      padding: 10px 20px;
+      /* Padding tombol */
+      border: 2px solid white;
+      /* Border putih */
+      border-radius: 8px;
+      /* Sudut tombol membulat */
+      background-color: white;
+      /* Latar belakang tombol putih */
+      text-align: center;
+      /* Teks tombol rata tengah */
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+      /* Bayangan tombol */
+      transition: all 0.3s ease;
+      /* Transisi halus saat hover */
+    }
+
+    /* ==============================
+    Kelas untuk Hover Tombol
+    ============================== */
+    .button:hover {
+      color: white;
+      /* Warna teks putih saat hover */
+      background-color: #444444;
+      /* Latar belakang tombol lebih terang */
+      border: 2px solid white;
+      /* Border tetap putih saat hover */
+      box-shadow: 0 6px 12px rgba(0, 123, 255, 0.6);
+      /* Bayangan lebih besar saat hover */
+      transform: translateY(-3px);
+      /* Efek tombol terangkat */
+    }
+
+    /* ==============================
+    Kelas untuk Efek Tombol Aktif (Saat Diklik)
+    ============================== */
+    .button:active {
+      transform: translateY(1px);
+      /* Efek tombol menurun saat ditekan */
+    }
+  </style>
 </head>
 
-<body>
-  <h1 id="title">Financial Management Application</h1>
+<body class="body">
   <div>
-    <button id="account_management">Account Management</button>
-    <button id="category_management">Transaction Categories</button>
-    <button id="transaction_details">Transaction Details</button>
+    <h2 class="h2-title">Pilih Bahasa</h2>
+    <div class="button-container">
+      <a href="./en" class="button">English</a>
+      <a href="./id" class="button">Bahasa Indonesia</a>
+    </div>
   </div>
-
-  <!-- Dropdown untuk memilih bahasa -->
-  <select onchange="changeLanguage(this.value)">
-    <option value="en">English</option>
-    <option value="id">Bahasa Indonesia</option>
-  </select>
-
-  <div>
-    <button id="save">Save</button>
-    <button id="cancel">Cancel</button>
-  </div>
-
-  <script>
-    let currentLang = 'en'; // Default language
-
-    // Fungsi untuk memuat file JSON bahasa
-    function loadLanguage(lang) {
-      fetch(`./assets/lang/${lang}.json`)
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('title').textContent = data.title;
-          document.getElementById('account_management').textContent = data.account_management;
-          document.getElementById('category_management').textContent = data.category_management;
-          document.getElementById('transaction_details').textContent = data.transaction_details;
-          document.getElementById('save').textContent = data.save;
-          document.getElementById('cancel').textContent = data.cancel;
-        });
-    }
-
-    // Fungsi untuk mengubah bahasa dan mengarahkan ke folder yang sesuai
-    function changeLanguage(lang) {
-      currentLang = lang;
-
-      // Pindahkan pengguna ke folder sesuai bahasa yang dipilih
-      if (lang === 'id') {
-        window.location.href = './id'; // Redirect ke folder id (Bahasa Indonesia)
-      } else if (lang === 'en') {
-        window.location.href = './en'; // Redirect ke folder en (Bahasa Inggris)
-      }
-
-      // Memuat bahasa yang sesuai setelah redirect
-      loadLanguage(lang);
-    }
-
-    // Memuat bahasa default (Inggris) pada awalnya
-    loadLanguage(currentLang);
-  </script>
 </body>
 
 </html>
